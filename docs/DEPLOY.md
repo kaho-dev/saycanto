@@ -28,21 +28,28 @@ To publish a new dictionary after changing the data:
 ## 2. Deploy the API on Cloud Run
 
 1. Open **Cloud Run** → **Deploy container** → **Service**.
-2. Choose **Continuously deploy from a repository** → **Set up with Cloud Build**:
-   - Repository provider: **GitHub**, authorise, and pick `kaho-dev/saycanto`.
+2. Choose **Continuously deploy from a repository**, pick **Cloud Build**, then **Set up with Cloud Build**:
+   - Repository provider: **GitHub**; click **Authenticate** in the panel and approve the Google Cloud Build
+     GitHub app for this repository only; pick `kaho-dev/saycanto` and tick the data-transfer consent.
    - Branch: `^main$`.
    - Build type: **Dockerfile**, source location `/Dockerfile`.
 3. Service settings:
-   - **Region**: e.g. `us-central1` (free-tier outbound data is counted for North America).
+   - **Service name**: `saycanto-api`.
+   - **Region**: `europe-west1` (Belgium) is what the live service uses; any Tier 1 region works.
    - **Authentication**: allow public (unauthenticated) access. The API is read-only.
    - **Billing**: request-based (CPU only while handling requests).
    - **Scaling**: minimum instances **0**, maximum instances **2**.
    - **Container**: port `8080`, memory `512 MiB`, CPU `1`.
-   - **Variables**: `CORS_ORIGIN` = `*` for now (set it to the website address in step 4).
+   - **Variables**: none needed yet; the image defaults `CORS_ORIGIN` to `*` (set it in step 4).
+   - **Security → Service account**: *Default compute service account* (the form will not submit without one).
 4. Create. When it is ready, copy the service URL (`https://saycanto-…run.app`) and check
    `https://<service-url>/api/health` returns `{"status":"ok"}`.
 5. **Artifact Registry** keeps every built image (~100 MB each). Add a cleanup policy that keeps
    only the 2 most recent versions so storage stays inside the free 0.5 GB.
+
+**Live (27 Nov 2026):** project `saycanto-516012`, service `saycanto-api`, region `europe-west1`,
+URL `https://saycanto-api-417998879746.europe-west1.run.app`, billing account "My Billing Account 2" with a
+€1/month budget alert, 0–2 instances, request-based billing, public access.
 
 ## 3. Deploy the website on Vercel
 
