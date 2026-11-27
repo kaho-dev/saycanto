@@ -1,0 +1,396 @@
+[
+  {
+    "id": "m4-goi1",
+    "english": ["thank you", "please", "excuse me"],
+    "jyutping": "m4 goi1",
+    "traditional": "唔該",
+    "simplified": "唔该",
+    "partOfSpeech": "expression",
+    "register": "spoken",
+    "notes": "Used for thanking someone for a service or favor, asking politely, or getting attention (e.g., at a restaurant or on transit). For gifts or deep gratitude, use do1 ze6 (多謝).",
+    "examples": [
+      {
+        "jyutping": "m4 goi1, maai4 daan1.",
+        "cantonese": "唔該，埋單。",
+        "english": "Excuse me, check please."
+      }
+    ]
+  },
+  {
+    "id": "do1-ze6",
+    "english": ["thank you", "thanks"],
+    "jyutping": "do1 ze6",
+    "traditional": "多謝",
+    "simplified": "多谢",
+    "partOfSpeech": "expression",
+    "register": "spoken",
+    "notes": "Used when receiving a gift, money, or deep kindness/compliment. For favors or services, use m4 goi1 (唔該).",
+    "examples": [
+      {
+        "jyutping": "do1 ze6 nei5 ge3 lai5 mat6.",
+        "cantonese": "多謝你嘅禮物。",
+        "english": "Thank you for your gift."
+      }
+    ]
+  },
+  {
+    "id": "sik6-faan6",
+    "english": ["eat", "have a meal", "dine"],
+    "jyutping": "sik6 faan6",
+    "traditional": "食飯",
+    "simplified": "食饭",
+    "partOfSpeech": "verb",
+    "register": "spoken",
+    "notes": "Commonly used as a casual greeting: 'sik6 zo2 faan6 mei6?' (Have you eaten yet?).",
+    "examples": [
+      {
+        "jyutping": "nei5 sik6 zo2 faan6 mei6 aa3?",
+        "cantonese": "你食咗飯未呀？",
+        "english": "Have you eaten yet?"
+      }
+    ]
+  },
+  {
+    "id": "bin1-dou6",
+    "english": ["where"],
+    "jyutping": "bin1 dou6",
+    "traditional": "邊度",
+    "simplified": "边度",
+    "partOfSpeech": "pronoun",
+    "register": "spoken",
+    "notes": "Spoken Cantonese equivalent of formal 'naa5 leoi5' (哪裏).",
+    "examples": [
+      {
+        "jyutping": "sai2 sau2 gaan1 hai2 bin1 dou6 aa3?",
+        "cantonese": "洗手間喺邊度呀？",
+        "english": "Where is the restroom?"
+      }
+    ]
+  },
+  {
+    "id": "gei2-do1-cin2",
+    "english": ["how much", "how much does it cost"],
+    "jyutping": "gei2 do1 cin2",
+    "traditional": "幾多錢",
+    "simplified": "几多钱",
+    "partOfSpeech": "phrase",
+    "register": "spoken",
+    "notes": "Essential shopping phrase.",
+    "examples": [
+      {
+        "jyutping": "ni1 go3 gei2 do1 cin2 aa3?",
+        "cantonese": "呢個幾多錢呀？",
+        "english": "How much is this?"
+      }
+    ]
+  },
+  {
+    "id": "seoi2",
+    "english": ["water"],
+    "jyutping": "seoi2",
+    "traditional": "水",
+    "simplified": "水",
+    "partOfSpeech": "noun",
+    "register": "both",
+    "classifier": "bui1 (杯) / zi1 (支)",
+    "notes": "Use classifier bui1 (杯) for a glass/cup of water, zi1 (支) for a bottle.",
+    "examples": [
+      {
+        "jyutping": "m4 goi1 bei2 bui1 seoi2 ngo5.",
+        "cantonese": "唔該畀杯水我。",
+        "english": "Please give me a glass of water."
+      }
+    ]
+  },
+  {
+    "id": "hou2-sik6",
+    "english": ["delicious", "tasty", "yummy"],
+    "jyutping": "hou2 sik6",
+    "traditional": "好食",
+    "simplified": "好食",
+    "partOfSpeech": "adjective",
+    "register": "spoken",
+    "notes": "Natural spoken Cantonese; formal written Chinese uses 'hou2 mei6' or 'mei5 mei6' (美味).",
+    "examples": [
+      {
+        "jyutping": "di1 dim2 sam1 hou2 hou2 sik6!",
+        "cantonese": "啲點心好好食！",
+        "english": "The dim sum is really delicious!"
+      }
+    ]
+  },
+  {
+    "id": "zou2-san4",
+    "english": ["good morning", "morning"],
+    "jyutping": "zou2 san4",
+    "traditional": "早晨",
+    "simplified": "早晨",
+    "partOfSpeech": "expression",
+    "register": "spoken",
+    "notes": "Standard Cantonese morning greeting.",
+    "examples": [
+      {
+        "jyutping": "zou2 san4, gam1 jat6 hou2 tin1 hei3!",
+        "cantonese": "早晨，今日好天氣！",
+        "english": "Good morning, great weather today!"
+      }
+    ]
+  },
+  {
+    "id": "deoi3-m4-zyu6",
+    "english": ["sorry", "excuse me", "apologize"],
+    "jyutping": "deoi3 m4 zyu6",
+    "traditional": "對唔住",
+    "simplified": "對唔住",
+    "partOfSpeech": "expression",
+    "register": "spoken",
+    "notes": "Used for apologizing. For 'excuse me' to pass by or call a waiter, use m4 goi1 (唔該).",
+    "examples": [
+      {
+        "jyutping": "deoi3 m4 zyu6, ngo5 ci4 dou3 zo2.",
+        "cantonese": "對唔住，我遲到咗。",
+        "english": "Sorry, I'm late."
+      }
+    ]
+  },
+  {
+    "id": "zoi3-gin3",
+    "english": ["goodbye", "bye", "see you"],
+    "jyutping": "zoi3 gin3",
+    "traditional": "再見",
+    "simplified": "再见",
+    "partOfSpeech": "expression",
+    "register": "both",
+    "notes": "In casual speech, Hong Kong speakers also frequently say 'baai1 baai3' (拜拜).",
+    "examples": [
+      {
+        "jyutping": "ting1 jat6 zoi3 gin3!",
+        "cantonese": "聽日再見！",
+        "english": "See you tomorrow!"
+      }
+    ]
+  },
+  {
+    "id": "jiu3-hai6",
+    "english": ["if", "in case"],
+    "jyutping": "jiu3 hai6",
+    "traditional": "要係",
+    "simplified": "要系",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Everyday spoken 'if'; same meaning as jyu4 gwo2 (如果).",
+    "examples": [
+      {
+        "jyutping": "jiu3 hai6 lok6 jyu5, ngo5 dei6 zau6 m4 heoi3.",
+        "cantonese": "要係落雨，我哋就唔去。",
+        "english": "If it rains, we won't go."
+      }
+    ]
+  },
+  {
+    "id": "jyu4-gwo2",
+    "english": ["if", "in case", "supposing"],
+    "jyutping": "jyu4 gwo2",
+    "traditional": "如果",
+    "simplified": "如果",
+    "partOfSpeech": "conjunction",
+    "register": "both",
+    "notes": "The standard 'if', in speech and writing. Spoken alternatives: jiu3 hai6 (要係), joek6 gwo2 (若果).",
+    "examples": [
+      {
+        "jyutping": "jyu4 gwo2 nei5 dak1 haan4, zau6 lai4 wan2 ngo5 laa1.",
+        "cantonese": "如果你得閒，就嚟搵我啦。",
+        "english": "If you're free, come and see me."
+      }
+    ]
+  },
+  {
+    "id": "tung4",
+    "english": ["and", "with", "together with", "same", "similar", "like"],
+    "jyutping": "tung4",
+    "traditional": "同",
+    "simplified": "同",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Links nouns ('A and B') and means 'with'. Writing uses wo4 (和) or jyu5 (與). Also means 'same', as in 相同.",
+    "examples": [
+      {
+        "jyutping": "ngo5 tung4 keoi5 hai6 pang4 jau5.",
+        "cantonese": "我同佢係朋友。",
+        "english": "He and I are friends."
+      }
+    ]
+  },
+  {
+    "id": "so2-ji5",
+    "english": ["so", "therefore", "that's why", "hence"],
+    "jyutping": "so2 ji5",
+    "traditional": "所以",
+    "simplified": "所以",
+    "partOfSpeech": "conjunction",
+    "register": "both",
+    "notes": "Often paired with jan1 wai6 (因為): 因為…所以…",
+    "examples": [
+      {
+        "jyutping": "jan1 wai6 lok6 jyu5, so2 ji5 ngo5 mou5 ceot1 gaai1.",
+        "cantonese": "因為落雨，所以我冇出街。",
+        "english": "It was raining, so I didn't go out."
+      }
+    ]
+  },
+  {
+    "id": "jan1-ci2",
+    "english": ["therefore", "so", "thus", "consequently", "as a result"],
+    "jyutping": "jan1 ci2",
+    "traditional": "因此",
+    "simplified": "因此",
+    "partOfSpeech": "conjunction",
+    "register": "formal",
+    "notes": "Written or formal; in speech use so2 ji5 (所以)."
+  },
+  {
+    "id": "gam2",
+    "english": ["so", "then", "in that case", "like this", "this way", "such"],
+    "jyutping": "gam2",
+    "traditional": "噉",
+    "simplified": "噉",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Starts a sentence as 'so / then'. Often written 咁 informally, but 咁 gam3 means 'so (very)'.",
+    "examples": [
+      {
+        "jyutping": "gam2 ngo5 dei6 ting1 jat6 gin3 laa1.",
+        "cantonese": "噉我哋聽日見啦。",
+        "english": "Then let's meet tomorrow."
+      }
+    ]
+  },
+  {
+    "id": "zung6-jau5",
+    "english": ["and also", "moreover", "in addition", "plus", "there's still"],
+    "jyutping": "zung6 jau5",
+    "traditional": "仲有",
+    "simplified": "仲有",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Adds another item or point. For plain 'also' use dou1 (都).",
+    "examples": [
+      {
+        "jyutping": "ngo5 jiu3 gaa3 fe1, zung6 jau5 jat1 gin6 daan6 gou1.",
+        "cantonese": "我要咖啡，仲有一件蛋糕。",
+        "english": "I'd like a coffee, and also a slice of cake."
+      }
+    ]
+  },
+  {
+    "id": "gan1-zyu6",
+    "english": ["then", "and then", "next", "after that", "to follow"],
+    "jyutping": "gan1 zyu6",
+    "traditional": "跟住",
+    "simplified": "跟住",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Spoken 'and then' for a sequence of events; written: jin4 hau6 (然後).",
+    "examples": [
+      {
+        "jyutping": "ngo5 dei6 sik6 jyun4 faan6, gan1 zyu6 heoi3 tai2 hei3.",
+        "cantonese": "我哋食完飯，跟住去睇戲。",
+        "english": "We'll eat, then go to a movie."
+      }
+    ]
+  },
+  {
+    "id": "bat1-jyu4",
+    "english": ["how about", "why not", "it would be better to", "not as good as"],
+    "jyutping": "bat1 jyu4",
+    "traditional": "不如",
+    "simplified": "不如",
+    "partOfSpeech": "conjunction",
+    "register": "both",
+    "notes": "Used to make a suggestion; also 'not as good as' (A 不如 B).",
+    "examples": [
+      {
+        "jyutping": "bat1 jyu4 ngo5 dei6 heoi3 jam2 caa4 laa1.",
+        "cantonese": "不如我哋去飲茶啦。",
+        "english": "How about we go for dim sum?"
+      }
+    ]
+  },
+  {
+    "id": "m4-hai6",
+    "english": ["otherwise", "or else", "is not", "no"],
+    "jyutping": "m4 hai6",
+    "traditional": "唔係",
+    "simplified": "唔系",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Main meaning 'is not / no'. Between two clauses it means 'otherwise'; fuller form 唔係嘅話.",
+    "examples": [
+      {
+        "jyutping": "faai3 di1 laa1, m4 hai6 zau6 gon2 m4 cit3 laa3.",
+        "cantonese": "快啲啦，唔係就趕唔切喇。",
+        "english": "Hurry up, otherwise we'll be late."
+      }
+    ]
+  },
+  {
+    "id": "hou2-ci5",
+    "english": ["as if", "like", "to seem", "similar to"],
+    "jyutping": "hou2 ci5",
+    "traditional": "好似",
+    "simplified": "好似",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Spoken; written equivalent hou2 zoeng6 (好像).",
+    "examples": [
+      {
+        "jyutping": "keoi5 hou2 ci5 m4 hoi1 sam1.",
+        "cantonese": "佢好似唔開心。",
+        "english": "He seems unhappy."
+      }
+    ]
+  },
+  {
+    "id": "tung4-si4",
+    "english": ["meanwhile", "at the same time", "simultaneously"],
+    "jyutping": "tung4 si4",
+    "traditional": "同時",
+    "simplified": "同时",
+    "partOfSpeech": "conjunction",
+    "register": "both"
+  },
+  {
+    "id": "jat1-hai6",
+    "english": ["either ... or", "or", "how about", "or else"],
+    "jyutping": "jat1 hai6",
+    "traditional": "一係",
+    "simplified": "一系",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Repeated for 'either … or': 一係…一係…",
+    "examples": [
+      {
+        "jyutping": "jat1 hai6 nei5 lai4, jat1 hai6 ngo5 heoi3.",
+        "cantonese": "一係你嚟，一係我去。",
+        "english": "Either you come or I go."
+      }
+    ]
+  },
+  {
+    "id": "wai6-zo2",
+    "english": ["for", "in order to", "so as to", "for the sake of", "because of"],
+    "jyutping": "wai6 zo2",
+    "traditional": "為咗",
+    "simplified": "为咗",
+    "partOfSpeech": "conjunction",
+    "register": "spoken",
+    "notes": "Spoken form of wai6 liu5 (為了).",
+    "examples": [
+      {
+        "jyutping": "keoi5 wai6 zo2 ceot1 gwok3 duk6 syu1 hou2 kan4 lik6 cyu5 cin2.",
+        "cantonese": "佢為咗出國讀書好勤力儲錢。",
+        "english": "She is saving hard so she can study abroad."
+      }
+    ]
+  }
+]

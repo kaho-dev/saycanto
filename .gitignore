@@ -1,0 +1,30 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Backend
+backend/dictionary.db
+backend/coverage.out
+backend/bin/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/coverage/
+frontend/.env.local
+
+# Data (downloaded, not committed; see data/README.md)
+data/cccanto-webdist.txt
+backend/coverage
+data/cccedict-canto-readings-*.txt
+data/cedict_1_0_ts_utf-8_mdbg.*
+data/cedict_ts.u8
+data/large_zh.msgpack.gz
+data/hkcancor-utf8.zip
+data/english-wordnet-2025.zip
+
+# TypeScript build cache
+*.tsbuildinfo
