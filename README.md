@@ -35,5 +35,5 @@ cd frontend && npm run test:coverage
 ```
 
 ## Licensing
-- **Source Code:** MIT License
+- **Source Code:** MIT License (see `LICENSE`)
 - **Dictionary Data:** **CC BY-SA 4.0**. Built from CC-Canto and CC-CEDICT Cantonese readings (© Pleco Software, CC BY-SA 3.0) and CC-CEDICT (MDBG and contributors, CC BY-SA 4.0); see `data/README.md`.
