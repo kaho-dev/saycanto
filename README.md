@@ -1,5 +1,7 @@
 # SayCanto
 
+**Live:** https://saycanto.vercel.app
+
 An open-source **English → Cantonese** dictionary built with **Jyutping** front-and-center, spoken vs. formal register tags, classifiers, and natural example sentences.
 
 ## Tech Stack

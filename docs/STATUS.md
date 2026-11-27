@@ -45,6 +45,9 @@ Not checked yet: `npm run build`, `npm run lint`, the Docker image, an end-to-en
   UI: chips with counts under the search box; filtered lists use whole-word matching so they agree with the counts.
   Search speed with counts: most 20–40 ms; "so" ≈ 0.18 s, "and" ≈ 0.2 s, "a" ≈ 0.6 s.
 
+- **Live (27 Nov 2026)**: website https://saycanto.vercel.app (Vercel), API on Cloud Run (europe-west1), both
+  redeploy on every push to `main`. API restricted to the website via `CORS_ORIGIN`. Details in `docs/DEPLOY.md`.
+
 ## Known bugs
 1. ~~**Importer crashes with real CC-Canto data.**~~ **Fixed 27 Nov.** A curated entry now replaces *every* base entry
    with the same `traditional|jyutping` key, curated ids are kept as written, colliding base ids are renumbered

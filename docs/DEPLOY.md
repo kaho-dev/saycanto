@@ -47,9 +47,19 @@ To publish a new dictionary after changing the data:
 5. **Artifact Registry** keeps every built image (~100 MB each). Add a cleanup policy that keeps
    only the 2 most recent versions so storage stays inside the free 0.5 GB.
 
-**Live (27 Nov 2026):** project `saycanto-516012`, service `saycanto-api`, region `europe-west1`,
-URL `https://saycanto-api-417998879746.europe-west1.run.app`, billing account "My Billing Account 2" with a
-€1/month budget alert, 0–2 instances, request-based billing, public access.
+## Live setup (27 Nov 2026)
+
+| | |
+|---|---|
+| Website | https://saycanto.vercel.app (Vercel team "MarshalBuilder", Hobby; project `saycanto`, root `frontend`) |
+| API | https://saycanto-api-417998879746.europe-west1.run.app (Cloud Run service `saycanto-api`, project `saycanto-516012`, `europe-west1`) |
+| API settings | 0–2 instances, request-based billing, 512 MiB, public access, default compute service account, `CORS_ORIGIN=https://saycanto.vercel.app` |
+| Billing | Billing account "My Billing Account 2", €1/month budget alert |
+| Image storage | Artifact Registry `cloud-run-source-deploy`: cleanup policies `delete-older-than-1-day` + `keep-2-most-recent` |
+| Deploys | Every push to `main` rebuilds both (Cloud Build trigger for the API, Vercel Git integration for the site) |
+
+Note: with `CORS_ORIGIN` set to the production address, Vercel **preview** deployments (other URLs) cannot
+call the API from the browser; their server-rendered word pages still work.
 
 ## 3. Deploy the website on Vercel
 
@@ -60,8 +70,9 @@ URL `https://saycanto-api-417998879746.europe-west1.run.app`, billing account "M
 
 ## 4. Lock the API to the website
 
-In Cloud Run → the service → **Edit & deploy new revision** → Variables: set `CORS_ORIGIN` to the
-website address, e.g. `https://saycanto.vercel.app`, and deploy. Browsers on other sites can then no
+In Cloud Run → the service → **Containers** tab → Variables & Secrets → **Add variable**: `CORS_ORIGIN` =
+the website address, e.g. `https://saycanto.vercel.app`, then **View diff & redeploy** → Deploy changes.
+Environment variables survive later automatic deploys from Cloud Build. Browsers on other sites can then no
 longer call the API directly.
 
 ## Checks after each deploy
