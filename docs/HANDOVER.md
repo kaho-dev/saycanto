@@ -9,7 +9,7 @@ Add a new dated section at the top at the end of each working session.
 
 ### Where things stand
 - **Live:** website https://saycanto.vercel.app · API https://saycanto-api-417998879746.europe-west1.run.app
-- **Repo:** https://github.com/kaho-dev/saycanto, branch `main`, last commit `cd29ece`, working tree clean.
+- **Repo:** https://github.com/kaho-dev/saycanto, branch `main`, everything committed and pushed (see `git log`).
   CI (backend, frontend, docker) green on every push.
 - **Dictionary:** 122,998 entries (CC-Canto + CC-CEDICT with Cantonese readings + 24 curated), with frequency scores
   and word types (61% typed). Published as GitHub release `data-2026-11-27` (`dictionary.db.gz`, SHA-256 in `Dockerfile`).
