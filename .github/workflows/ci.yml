@@ -46,3 +46,19 @@ jobs:
         run: npm run test:coverage
       - name: Build Next.js app
         run: npm run build
+
+  docker:
+    # Builds the API image exactly as Cloud Run will (downloading the released dictionary and
+    # checking its SHA-256), then checks the container answers a search.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build API image
+        run: docker build -t saycanto-api .
+      - name: Smoke test
+        run: |
+          docker run -d --name api -p 8080:8080 saycanto-api
+          for i in $(seq 1 30); do curl -sf localhost:8080/api/health && break; sleep 1; done
+          curl -sf "localhost:8080/api/search?q=thank+you&limit=1" | tee /tmp/r.json
+          grep -q '"traditional"' /tmp/r.json
+          docker logs api

@@ -20,7 +20,9 @@ frontend/           Next.js 15 App Router, React 19, Tailwind 3, Vitest. See fro
   src/app           routes: / (client search page), /word/[id] (server component)
   src/features/dictionary   api · components · hooks · types
   src/shared        api client, UI primitives
-data/custom.json    hand-curated entries (CC BY-SA 3.0); the source of truth for quality data
+data/custom.json    hand-curated entries (CC BY-SA 4.0); the source of truth for quality data
+data/CREDITS.md     credits and licences for every data source (shipped with each dictionary release)
+Dockerfile          API image for Cloud Run; downloads the released dictionary.db.gz (see docs/DEPLOY.md)
 .github/workflows/ci.yml   backend + frontend jobs, both gate on >= 80% coverage
 ```
 

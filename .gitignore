@@ -28,3 +28,6 @@ data/english-wordnet-2025.zip
 
 # TypeScript build cache
 *.tsbuildinfo
+
+# Release packaging output
+dist/

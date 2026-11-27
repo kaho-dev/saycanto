@@ -14,7 +14,33 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="flex min-h-screen flex-col antialiased">
+        <div className="flex-1">{children}</div>
+        <footer className="mx-auto max-w-3xl px-4 pb-8 pt-4 text-center text-xs text-slate-500">
+          Dictionary data from CC-Canto, CC-CEDICT, HKCanCor, wordfreq and Open English WordNet,
+          shared under{" "}
+          <a
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            className="underline hover:text-indigo-600"
+          >
+            CC BY-SA 4.0
+          </a>
+          .{" "}
+          <a
+            href="https://github.com/kaho-dev/saycanto/blob/main/data/CREDITS.md"
+            className="underline hover:text-indigo-600"
+          >
+            Full credits
+          </a>{" "}
+          ·{" "}
+          <a
+            href="https://github.com/kaho-dev/saycanto"
+            className="underline hover:text-indigo-600"
+          >
+            Source on GitHub
+          </a>
+        </footer>
+      </body>
     </html>
   );
 }

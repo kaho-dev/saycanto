@@ -1,0 +1,7 @@
+# Only backend/ and data/custom.json are needed to build the API image.
+*
+!backend/
+!data/custom.json
+backend/dictionary.db
+backend/coverage*
+backend/bin/

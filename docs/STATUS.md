@@ -90,7 +90,9 @@ Not checked yet: `npm run build`, `npm run lint`, the Docker image, an end-to-en
 - **Renamed JyutDict → SayCanto (27 Nov 2026)** because "Jyutdict" is used by jyutdict.org (泛粵大典, active, open source) and is
   close to Jyut Dictionary (github.com/aaronhktan/jyut-dict, jyutdictionary.com). Checked free on 27 Nov: GitHub repos/account,
   npm, PyPI; no DNS for saycanto.com/.org/.app/.dev/.io. Not checked: trademarks, social handles (X, Instagram, TikTok).
-- No frontend Dockerfile / deployment target; backend Dockerfile bakes only `custom.json` into the image.
+- Deployment: API on Google Cloud Run (root `Dockerfile` downloads the released `dictionary.db.gz`, SHA-256 checked;
+  `--build-arg DICT_URL=` builds curated-only), website on Vercel. Steps in `docs/DEPLOY.md`. Data credits in
+  `data/CREDITS.md` and the site footer. CI `docker` job builds and smoke-tests the image.
 - Build artefacts on disk (`.next/`, `coverage/`, `coverage.out`, `dictionary.db`) are gitignored.
 
 ## Suggested next steps (in order)

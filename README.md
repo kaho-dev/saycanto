@@ -34,6 +34,9 @@ cd backend && go test -coverprofile=coverage.out ./internal/... && go tool cover
 cd frontend && npm run test:coverage
 ```
 
+## Deploying
+See `docs/DEPLOY.md` (Google Cloud Run for the API, Vercel for the website).
+
 ## Licensing
 - **Source Code:** MIT License (see `LICENSE`)
 - **Dictionary Data:** **CC BY-SA 4.0**. Built from CC-Canto and CC-CEDICT Cantonese readings (© Pleco Software, CC BY-SA 3.0) and CC-CEDICT (MDBG and contributors, CC BY-SA 4.0); see `data/README.md`.
