@@ -28,8 +28,10 @@ data/README.md      every data source, download link and the full importer comma
 data/CREDITS.md     credits and licences for every data source (shipped with each dictionary release)
 Dockerfile          API image for Cloud Run; downloads the released dictionary.db.gz, SHA-256 checked
 scripts/check_words.py   audits a word list (scripts/wordlists/*.tsv) against the running API
-docs/               HANDOVER.md, STATUS.md, DEPLOY.md, conjunction-check.md
-.github/workflows/ci.yml   backend + frontend (>= 80% coverage) + docker (build and smoke-test the image)
+scripts/validate_custom.py   checks data/custom.json against the entry rules (CI)
+docs/               HANDOVER.md, STATUS.md, DEPLOY.md, MAINTAINING.md (branch protection + PR review), conjunction-check.md
+.github/workflows/ci.yml   Backend, Frontend (>= 80% coverage, gofmt/vet/tsc), Data, Docker image, PR checks
+.github/CODEOWNERS, pull_request_template.md   every PR needs the maintainer's review
 ```
 
 ## Commands
@@ -46,6 +48,7 @@ Run from the folder shown. The shell here is Windows; Git Bash and PowerShell bo
 | Frontend tests | `cd frontend && npm run test:coverage` |
 | Typecheck / build | `cd frontend && npx tsc --noEmit` / `npm run build` |
 
+| Validate curated data | `python scripts/validate_custom.py` (CI `Data` job runs it on every PR) |
 | Word-list audit | `python scripts/check_words.py scripts/wordlists/conjunctions.tsv --out docs/conjunction-check.md` (API on :8080) |
 
 Rebuild `dictionary.db` after any change to `data/custom.json` or the schema; the API does not re-import, and it holds

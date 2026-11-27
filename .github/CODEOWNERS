@@ -1,0 +1,21 @@
+# Every change needs a review from a code owner before it can merge
+# (enforced once "Require review from Code Owners" is on for `main`; see docs/MAINTAINING.md).
+# Later rules override earlier ones, so list trusted reviewers for an area below the default.
+
+# Default: the maintainer reviews everything.
+*                       @kaho-dev
+
+# High-risk areas: CI, build, deploy, dependencies and scripts. Keep these maintainer-only.
+/.github/               @kaho-dev
+/Dockerfile             @kaho-dev
+/.dockerignore          @kaho-dev
+/backend/go.mod         @kaho-dev
+/backend/go.sum         @kaho-dev
+/frontend/package.json  @kaho-dev
+/frontend/package-lock.json @kaho-dev
+/frontend/next.config.ts @kaho-dev
+/scripts/               @kaho-dev
+
+# Dictionary data. Add trusted native-speaker reviewers here when you have them,
+# e.g. `/data/custom.json @kaho-dev @their-github-name`.
+/data/                  @kaho-dev
