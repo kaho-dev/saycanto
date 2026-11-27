@@ -12,7 +12,9 @@ Next.js 15 App Router · React 19 · TypeScript strict · Tailwind 3 · Vitest 3
 - `src/features/dictionary/components/WordTypeChips.tsx` + `wordTypes.ts` — word-type filter chips with counts,
   shown while searching; only types with matches appear, and the note says how many untyped matches a filter hides.
   Cards label word types after the characters (falls back to the curated `partOfSpeech`).
+- `src/app/layout.tsx` — page shell and the data-credits footer (required by the data licences; keep it).
 - `src/shared/api/client.ts` — `apiFetch<T>` + `ApiError`; surfaces the backend's `{"error"}` message.
+  Production sets `NEXT_PUBLIC_API_URL` in Vercel to the Cloud Run URL.
 - `src/shared/ui/CopyButton.tsx` — clipboard copy with a 1.8 s "Copied!" state.
 - `src/shared/ui/ListenButton.tsx` + `src/shared/speech/cantoneseVoice.ts` — speaks Chinese characters with the device's
   Cantonese voice (Web Speech API); renders nothing if there is none. Never relax the voice filter to accept Mandarin

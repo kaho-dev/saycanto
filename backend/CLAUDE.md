@@ -27,14 +27,21 @@ clamp limit 1..50, nil → empty slice) → `dictionary.Repository` (`SQLiteRepo
 - Importer flags: `-cccanto`, `-cedict` + `-cedict-readings`, `-wordfreq`, `-hkcancor`, `-wordnet`, `-custom`, `-out`
   (full command in `data/README.md`). Readings and frequencies are never guessed.
 - Schema changes: `InitSchema` runs `CREATE ... IF NOT EXISTS` and then `addColumnIfMissing` for columns added later
-  (currently `source`), so older `dictionary.db` files upgrade in place. Add new columns the same way. Test the order with `TestSQLiteRepositorySearchRanking` when you change it.
+  (`source`, `gloss_keys`, `gloss_words`, `freq`, `word_types`), so older `dictionary.db` files upgrade in place (derived
+  columns are only filled by a re-import). Add new columns the same way. When changing ranking, run
+  `TestSQLiteRepositorySearchRanking`, `TestSearchRankingTiers`, `TestSearchPrefersCommonWords`, `TestSearchPrefersMainMeaning`.
 - `bm25()` weights map to FTS columns **in declaration order, including the UNINDEXED `id`** (currently `0, 10, 5, 2, 2`).
 
-## Importer
-`ParseCCCanto` (regex per line, comments/malformed lines skipped silently, every entry tagged `spoken`)
-→ `ParseCustomJSON` → `ValidateOverlay` (unique, non-empty ids) → `MergeEntries` (a curated entry replaces every base
-entry with the same `traditional|jyutping` key; curated ids are never changed; colliding base ids get the next free `-N`)
-→ `BuildDatabase`. On Windows run tests without `-race` (needs CGO); CI keeps it.
+## Importer (`cmd/importer/main.go`, `internal/importer/`)
+1. `ParseCCCanto` (trailing `# notes` and empty `[]` pinyin handled; every entry tagged `spoken`).
+2. `ParseCantoReadings` + `ParseCEDICT` (`cedict.go`; zip read directly; v1 and v2 pinyin; skips headwords with no
+   Cantonese reading and cross-reference-only senses) → `CombineBase` (same characters + Jyutping → meanings merged).
+3. `ParseCustomJSON` → `ValidateOverlay` (unique, non-empty ids) → `MergeEntries` (a curated entry replaces every base
+   entry with the same `traditional|jyutping` key; curated ids never change; colliding base ids get the next free `-N`).
+4. `LoadWordfreq` (minimal msgpack decoder) + `LoadHKCanCor` → `ApplyFrequencies` (`frequency.go`).
+5. `InferWordTypes` (`wordtypes.go`) → `InferWordTypesFromWordNet` (`wordnet.go`, untyped entries only).
+6. `BuildDatabase` (full rebuild). The importer logs counts for every step; check them after a rebuild.
+On Windows run tests without `-race` (needs CGO); CI keeps it.
 
 ## Tests
 - `service_test.go` / `controller_test.go` use hand-written mocks of the interfaces.
