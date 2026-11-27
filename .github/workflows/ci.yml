@@ -6,8 +6,19 @@ on:
   pull_request:
     branches: [main]
 
+# Least privilege: jobs can read the repo and nothing else. Fork PRs also get a read-only token
+# and no secrets (we use `pull_request`, never `pull_request_target`).
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# Job names are the required status checks on `main` (docs/MAINTAINING.md). Rename them there too.
 jobs:
   backend:
+    name: Backend
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -17,6 +28,19 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.23'
+      - name: Check formatting (gofmt)
+        run: |
+          UNFORMATTED=$(gofmt -l .)
+          if [ -n "$UNFORMATTED" ]; then
+            echo "::error::These files need 'gofmt -w':"; echo "$UNFORMATTED"; exit 1
+          fi
+      - name: Vet
+        run: go vet ./...
+      - name: Verify go.mod / go.sum are tidy and untampered
+        run: |
+          go mod verify
+          go mod tidy
+          git diff --exit-code go.mod go.sum || { echo "::error::Run 'go mod tidy' and commit the result"; exit 1; }
       - name: Run unit tests with coverage
         run: |
           go test -race -coverprofile=coverage.out ./internal/...
@@ -29,6 +53,7 @@ jobs:
           go build ./cmd/importer
 
   frontend:
+    name: Frontend
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -40,14 +65,36 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: frontend/package-lock.json
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies (exactly as locked, no install scripts)
+        run: npm ci --ignore-scripts
+      - name: Type check
+        run: npx tsc --noEmit
       - name: Run unit tests with >=80% coverage gate
         run: npm run test:coverage
       - name: Build Next.js app
         run: npm run build
 
+  data:
+    name: Data
+    # Checks data/custom.json follows the entry rules, then imports it into a fresh database.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate curated entries
+        run: python -I scripts/validate_custom.py data/custom.json
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache-dependency-path: backend/go.sum
+      - name: Test import
+        working-directory: backend
+        run: go run ./cmd/importer -custom ../data/custom.json -out "$RUNNER_TEMP/dictionary.db"
+
   docker:
+    name: Docker image
     # Builds the API image exactly as Cloud Run will (downloading the released dictionary and
     # checking its SHA-256), then checks the container answers a search.
     runs-on: ubuntu-latest
@@ -62,3 +109,44 @@ jobs:
           curl -sf "localhost:8080/api/search?q=thank+you&limit=1" | tee /tmp/r.json
           grep -q '"traditional"' /tmp/r.json
           docker logs api
+
+  pr-checks:
+    name: PR checks
+    # Guards against things tests can't catch: committed build output, databases, downloaded data,
+    # secrets files, huge files, and new dependencies with known vulnerabilities.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: No generated, secret or oversized files
+        run: |
+          FAIL=0
+          BAD=$(git ls-files | grep -E \
+            -e '(^|/)node_modules/' -e '(^|/)\.next/' -e '(^|/)coverage(/|\.out$)' -e '(^|/)dist/' \
+            -e '\.(db|sqlite|sqlite3|exe|dll|so|dylib|tsbuildinfo)$' \
+            -e '(^|/)\.env($|\.)' -e '\.(pem|key|p12|pfx)$' \
+            -e '^data/(cccanto-webdist\.txt|cccedict-canto-readings-.*|cedict_.*|large_zh\.msgpack\.gz|hkcancor-utf8\.zip|english-wordnet-.*)$' \
+            || true)
+          if [ -n "$BAD" ]; then
+            echo "::error::These files must not be committed (generated, secret or downloaded data):"; echo "$BAD"; FAIL=1
+          fi
+          BIG=$(git ls-files -z | xargs -0 -I{} sh -c 's=$(stat -c %s "{}"); [ "$s" -gt 1048576 ] && echo "$s {}"' || true)
+          if [ -n "$BIG" ]; then
+            echo "::error::Files over 1 MB (bytes, path):"; echo "$BIG"; FAIL=1
+          fi
+          exit $FAIL
+      - name: Flag changes to sensitive files for the reviewer
+        run: |
+          CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -E \
+            '^(\.github/|Dockerfile|\.dockerignore|backend/go\.(mod|sum)|frontend/(package(-lock)?\.json|next\.config\.ts)|scripts/)' || true)
+          if [ -n "$CHANGED" ]; then
+            echo "::warning::This PR changes CI, build, dependency or script files. Review them line by line before approving."
+            { echo "### ⚠️ Sensitive files changed"; echo; echo "$CHANGED" | sed 's/^/- `/; s/$/`/'; } >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Dependency review (blocks new vulnerable or copyleft dependencies)
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+          deny-licenses: GPL-2.0, GPL-3.0, AGPL-3.0, LGPL-2.1, LGPL-3.0
